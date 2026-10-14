@@ -17,10 +17,15 @@ This repository contains a professional collection of Natural Language Processin
     * **Regex Engine:** Custom context-aware regular expression extraction to isolate target keywords and their immediate surrounding context without relying on deep dependency parsing.
 
 ### 2. Retrieval-Augmented Generation (RAG) QA System
-* **`02_rag_qa_system.ipynb`** *(Pending Upload)*
-  * **Dataset:** Natural Questions (NQ) benchmark.
-  * **Objective:** Build a robust Open-Domain Question Answering system using the Retrieve-and-Read paradigm.
-  * **Key Features:** BM25 sparse retrieval, MonoT5 neural re-ranking, and zero-shot generative answering utilizing Flan-T5 and Fusion-in-Decoder (FiD) architectures.
+* **`02_rag_qa_system.ipynb`**
+  * **Dataset:** Natural Questions (NQ) benchmark and Wikipedia Sparse Index.
+  * **Objective:** Build a robust Open-Domain Question Answering system using the Retrieve-and-Read paradigm to handle knowledge-intensive tasks.
+  * **Key Features:**
+    * **First-Stage Retrieval:** BM25 sparse retrieval leveraging PyTerrier.
+    * **Neural Re-Ranking:** MonoT5 integration to optimize the ranking of retrieved contexts based on semantic relevance.
+    * **Query Expansion:** Pseudo-Relevance Feedback using RM3 to augment initial queries.
+    * **Generative Reading (Zero-Shot):** Integration of sequence-to-sequence models (Flan-T5) and Fusion-in-Decoder (FiD) architectures to synthesize final answers from the retrieved passages.
+    * **Pipeline Benchmarking:** Automated evaluation frameworks using Exact Match (EM) and F1 scores to measure the performance delta between isolated retrieval and end-to-end generation.
 
 ### 3. LLM Bias & Ethics Audit (Named Entity Recognition)
 * **`03_ner_bias_audit.ipynb`** *(Pending Upload)*
@@ -33,6 +38,6 @@ This repository contains a professional collection of Natural Language Processin
 ## 🛠️ Tech Stack
 * **Core Frameworks:** Hugging Face `transformers`, `datasets`, PyTorch
 * **Information Retrieval:** PyTerrier (`pt`, `pyterrier_rag`, BM25, MonoT5)
+* **Generative LLMs:** `google/flan-t5-base`, `terrierteam/t5fid_base_nq`
 * **Classical NLP:** NLTK (`wordnet`, `averaged_perceptron_tagger`, `maxent_ne_chunker`), Regular Expressions (`re`)
 * **Data Processing & Evaluation:** Pandas, NumPy, Scikit-Learn (`confusion_matrix`, `f1_score`)
-* **Visualization:** Matplotlib, Seaborn
