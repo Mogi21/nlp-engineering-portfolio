@@ -28,16 +28,21 @@ This repository contains a professional collection of Natural Language Processin
     * **Pipeline Benchmarking:** Automated evaluation frameworks using Exact Match (EM) and F1 scores to measure the performance delta between isolated retrieval and end-to-end generation.
 
 ### 3. LLM Bias & Ethics Audit (Named Entity Recognition)
-* **`03_ner_bias_audit.ipynb`** *(Pending Upload)*
-  * **Dataset:** CoNLL 2003 & Custom Demographic Test Sets.
-  * **Objective:** Audit a pre-trained BERT classification model for demographic and gender biases.
-  * **Key Features:** Transformer fine-tuning evaluation, confusion matrix analytics, and disparate impact analysis across synthesized ethnic and gender-specific entity subsets.
+* **`03_ner_bias_audit.ipynb`**
+  * **Dataset:** CoNLL 2003, Gender Bias Set (Mehrabi et al., 2020), Ethnic Bias Set (Mishra et al., 2020).
+  * **Objective:** Audit a pre-trained BERT Sequence Classification model for demographic and gender biases, highlighting the failure points of unvetted datasets.
+  * **Key Features:**
+    * **Generalization Testing:** Contrasting in-domain validation performance with out-of-domain (CoNLL 2003) benchmarks.
+    * **Error Diagnostics:** Constructing high-resolution Confusion Matrices (`sklearn`, `seaborn`) to isolate false positives and class confusion.
+    * **Gender Bias Audit:** Measuring disparate impact ratios and tag recall across synthesized male and female entity subsets.
+    * **Ethnic Bias Audit:** Stratifying test splits across cross-sectional demographic groups (Black, Hispanic, White, Muslim) to reveal model prediction skews.
 
 ---
 
 ## 🛠️ Tech Stack
-* **Core Frameworks:** Hugging Face `transformers`, `datasets`, PyTorch
+* **Core Frameworks:** Hugging Face `transformers`, `datasets`, `evaluate`, PyTorch
 * **Information Retrieval:** PyTerrier (`pt`, `pyterrier_rag`, BM25, MonoT5)
 * **Generative LLMs:** `google/flan-t5-base`, `terrierteam/t5fid_base_nq`
 * **Classical NLP:** NLTK (`wordnet`, `averaged_perceptron_tagger`, `maxent_ne_chunker`), Regular Expressions (`re`)
 * **Data Processing & Evaluation:** Pandas, NumPy, Scikit-Learn (`confusion_matrix`, `f1_score`)
+* **Visualization:** Matplotlib, Seaborn
